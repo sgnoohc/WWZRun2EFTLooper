@@ -413,25 +413,35 @@ for key in files_all:
 print("rm -f outputs/data.root; mkdir -p outputs; ./doAnalysis -i \\\"v1/*Run201*.root\\\" -t t -o outputs/data.root > outputs/data.log 2>&1")
 
 # VVV all combined
-inputs = ",".join([files_all["WWW"] + files_all["WWZ"] + files_all["WZZ"] + files_all["ZZZ"])
+inputs = ",".join(files_all["WWW"] + files_all["WWZ"] + files_all["WZZ"] + files_all["ZZZ"])
 print("rm -f outputs/VVV.root; mkdir -p outputs; ./doAnalysis -i {} -t t -o outputs/VVV.root > outputs/VVV.log 2>&1".format(inputs))
 
 # Special handling of some extra backgrounds
-// #[133/228] FT0:m3p0
-// #[134/228] FT0:m1p5
-// #[135/228] FT0:m1p0
-// #[136/228] FT0:m0p8
-// #[137/228] FT0:m0p4
-// #[138/228] FT0:m0p2
-// #[139/228] FT0: 0p2
-// #[140/228] FT0: 0p4
-// #[141/228] FT0: 0p8
-// #[142/228] FT0: 1p0
-// #[143/228] FT0: 1p5
-// #[144/228] FT0: 3p0
-inputs = mc["WWZ_EFT_2018"]
-inputs = mc["WZZ_EFT_2018"]
-inputs = mc["ZZZ_EFT_2018"]
+rewgt_suffixs = {
+133:"m3p0",
+134:"m1p5",
+135:"m1p0",
+136:"m0p8",
+137:"m0p4",
+138:"m0p2",
+139:"0p2",
+140:"0p4",
+141:"0p8",
+142:"1p0",
+143:"1p5",
+144:"3p0",
+}
+for rewgt_idx in rewgt_suffixs.keys():
+    inputs = mc["WWZ_EFT_2018"]
+    fname = "WWZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
+    print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
+for rewgt_idx in rewgt_suffixs.keys():
+    inputs = mc["WWZ_EFT_2018"]
+    fname = "WWZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
+    print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
+
+    inputs = mc["WZZ_EFT_2018"]
+    inputs = mc["ZZZ_EFT_2018"]
 
 
 
