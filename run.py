@@ -436,14 +436,53 @@ for rewgt_idx in rewgt_suffixs.keys():
     fname = "WWZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
     print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
 for rewgt_idx in rewgt_suffixs.keys():
-    inputs = mc["WWZ_EFT_2018"]
-    fname = "WWZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
+    inputs = mc["WZZ_EFT_2018"]
+    fname = "WZZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
+    print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
+for rewgt_idx in rewgt_suffixs.keys():
+    inputs = mc["ZZZ_EFT_2018"]
+    fname = "ZZZ_EFT_FT0_{}".format(rewgt_suffixs[rewgt_idx])
     print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
 
-    inputs = mc["WZZ_EFT_2018"]
+rewgt_suffixs = {
+229:"m30",
+230:"m15",
+231:"m10",
+232:"m8",
+233:"m4",
+234:"m2",
+235:"2",
+236:"4",
+237:"8",
+238:"10",
+239:"15",
+240:"30",
+}
+
+for rewgt_idx in rewgt_suffixs.keys():
     inputs = mc["ZZZ_EFT_2018"]
+    fname = "ZZZ_EFT_FT8_{}".format(rewgt_suffixs[rewgt_idx])
+    print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
 
+rewgt_suffixs = {
+241:"m30",
+242:"m15",
+243:"m10",
+244:"m8",
+245:"m4",
+246:"m2",
+247:"2",
+248:"4",
+249:"8",
+250:"10",
+251:"15",
+252:"30",
+}
 
+for rewgt_idx in rewgt_suffixs.keys():
+    inputs = mc["ZZZ_EFT_2018"]
+    fname = "ZZZ_EFT_FT9_{}".format(rewgt_suffixs[rewgt_idx])
+    print("rm -f outputs/{}.root; mkdir -p outputs; ./doAnalysis -i {} -e {} -t t -o outputs/{}.root > outputs/{}.log 2>&1".format(fname, inputs, rewgt_idx, fname, fname))
 
 
 
